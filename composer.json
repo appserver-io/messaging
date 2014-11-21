@@ -1,6 +1,6 @@
 {
 	"name" : "appserver-io-psr/messagequeueprotocol",
-	"description" : "Implements the native Message-Queue protocol.",
+	"description" : "PSR describing a native Message-Queue protocol",
 	"homepage" : "https://github.com/appserver-io-psr/messagequeueprotocol",
 	"license" : "OSL-3.0",
 	"authors" : [{
