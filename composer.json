@@ -1,0 +1,41 @@
+{
+	"name" : "appserver-io-psr/messagequeueprotocol",
+	"description" : "Implements the native Message-Queue protocol.",
+	"homepage" : "https://github.com/appserver-io-psr/messagequeueprotocol",
+	"license" : "OSL-3.0",
+	"authors" : [{
+			"name" : "Tim Wagner",
+			"email" : "tw@appserver.io",
+			"homepage" : "https://github.com/wagnert",
+			"role" : "Developer"
+		}
+	],
+	"require" : {
+		"php" : ">=5.4.0"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "3.7.*",
+		"appserver-io/build" : "0.1.*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"AppserverIo\\Psr\\MessageQueueProtocol" : [
+				"src/",
+				"tests/"
+			]
+		}
+	},
+	"config" : {
+		"github-oauth" : {
+			"github.com" : "604a3b5943228e434a5b52c2ba3cf72286d30db9"
+		}
+	},
+	"support" : {
+		"email" : "t.wagner@techdivision.com",
+		"issues" : "https://github.com/appserver-io-psr/messagequeueprotocol/issues",
+		"source" : "https://github.com/appserver-io-psr/messagequeueprotocol"
+	},
+	"keywords" : [
+		"message queue protocol"
+	]
+}
