@@ -22,6 +22,9 @@
 
 namespace AppserverIo\Messaging;
 
+use AppserverIo\Psr\Pms\Message;
+use AppserverIo\Psr\Pms\MessageListener;
+use AppserverIo\Psr\Pms\MessageQueueException;
 use AppserverIo\Psr\Application\ApplicationInterface;
 
 /**
