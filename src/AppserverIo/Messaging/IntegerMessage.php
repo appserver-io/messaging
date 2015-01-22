@@ -64,7 +64,6 @@ class IntegerMessage extends AbstractMessage
 
         // check if we've an integer passed
         if (is_integer($message)) {
-
             // initialize the Integer sent with the message
             $this->message = $message;
 

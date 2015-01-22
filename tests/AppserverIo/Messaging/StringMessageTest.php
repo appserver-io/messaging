@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Messages\StringMessageTest
+ * AppserverIo\Messaging\StringMessageTest
  *
  * NOTICE OF LICENSE
  *
@@ -11,29 +11,27 @@
  *
  * PHP version 5
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
-namespace AppserverIo\Psr\MessageQueueProtocol\Messages;
+namespace AppserverIo\Messaging;
 
 /**
  * Test implementation class for the string message implementation.
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 class StringMessageTest extends \PHPUnit_Framework_TestCase
 {
@@ -55,7 +53,7 @@ class StringMessageTest extends \PHPUnit_Framework_TestCase
     /**
      * The string message implementation we want to test.
      *
-     * @var \AppserverIo\Psr\MessageQueueProtocol\Messages\StringMessage
+     * @var \AppserverIo\Messaging\StringMessage
      */
     protected $stringMessage;
 

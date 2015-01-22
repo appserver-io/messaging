@@ -64,7 +64,6 @@ class StringMessage extends AbstractMessage
 
         // check if we've an string passed
         if (is_string($message)) {
-
             // initialize the String sent with the message
             $this->message = $message;
 
