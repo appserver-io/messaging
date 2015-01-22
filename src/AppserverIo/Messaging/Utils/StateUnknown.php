@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateUnknown
+ * AppserverIo\Messaging\Utils\StateUnknown
  *
  * NOTICE OF LICENSE
  *
@@ -12,52 +12,52 @@
  * PHP version 5
  *
  * @category   Library
- * @package    TechDivision_MessageQueueProtocol
+ * @package    Messaging
  * @subpackage Utils
- * @author     Tim Wagner <tw@techdivision.com>
- * @author     Markus Stockbauer <ms@techdivision.com>
- * @copyright  2014 TechDivision GmbH <info@techdivision.com>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/techdivision/TechDivision_MessageQueueProtocol
- * @link       http://www.appserver.io
- */
-
-namespace AppserverIo\Psr\MessageQueueProtocol\Utils;
-
-/**
- * This class holds the MQStateKey used for
- * messages with unknown state.
- *
- * Messages are turned to this state when they
- * are running longer than ten minutes.
- *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
  * @author     Tim Wagner <tw@appserver.io>
  * @copyright  2014 TechDivision GmbH <info@appserver.io>
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
+ * @link       https://github.com/appserver-io/messaging
  * @link       http://www.appserver.io
  */
-class MQStateUnknown implements MQStateKey
+
+namespace AppserverIo\Messaging\Utils;
+
+use AppserverIo\Psr\Pms\StateKey;
+
+/**
+ * This class holds the state key used for messages with unknown state.
+ *
+ * Messages are turned to this state when they are running longer than ten minutes.
+ *
+ * @category   Library
+ * @package    Messaging
+ * @subpackage Utils
+ * @author     Tim Wagner <tw@appserver.io>
+ * @copyright  2014 TechDivision GmbH <info@appserver.io>
+ * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link       https://github.com/appserver-io/messaging
+ * @link       http://www.appserver.io
+ */
+class StateUnknown implements StateKey
 {
 
     /**
      * Holds the state key for failed messages.
+     *
      * @var integer
      */
     const KEY = 7;
 
     /**
-     * The string value for the 'unknown' MQStateKey.
+     * The string value for the 'unknown' state key.
+     *
      * @var string
      */
     protected $state = "unknown";
 
     /**
-     * Private constructor for marking
-     * the class as utility.
+     * Private constructor for marking the class as utility.
      */
     final protected function __construct()
     {
@@ -65,28 +65,27 @@ class MQStateUnknown implements MQStateKey
     }
 
     /**
-     * Returns a new instance of the MQStateKey.
+     * Returns a new instance of the state key.
      *
-     * @return MQStateUnknown The instance
+     * @return \AppserverIo\Messaging\Utils\StateUnknown The instance
      */
     public static function get()
     {
-        return new MQStateUnknown();
+        return new StateUnknown();
     }
 
     /**
-     * Returns the key value of the
-     * StateKey instance.
+     * Returns the key value of the state key instance.
      *
      * @return integer The key value
      */
     public function getState()
     {
-        return MQStateUnknown::KEY;
+        return StateUnknown::KEY;
     }
 
     /**
-     * Returns the string value for the MQStateKey.
+     * Returns the string value for the state key.
      *
      * @return string The string value
      */

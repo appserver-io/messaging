@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateInProgress
+ * AppserverIo\Messaging\Utils\StateInProgress
  *
  * NOTICE OF LICENSE
  *
@@ -12,49 +12,50 @@
  * PHP version 5
  *
  * @category   Library
- * @package    TechDivision_MessageQueueProtocol
+ * @package    Messaging
  * @subpackage Utils
- * @author     Tim Wagner <tw@techdivision.com>
- * @author     Markus Stockbauer <ms@techdivision.com>
- * @copyright  2014 TechDivision GmbH <info@techdivision.com>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/techdivision/TechDivision_MessageQueueProtocol
- * @link       http://www.appserver.io
- */
-
-namespace AppserverIo\Psr\MessageQueueProtocol\Utils;
-
-/**
- * This class holds the MQStateKey used
- * for messages in progress.
- *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
  * @author     Tim Wagner <tw@appserver.io>
  * @copyright  2014 TechDivision GmbH <info@appserver.io>
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
+ * @link       https://github.com/appserver-io/messaging
  * @link       http://www.appserver.io
  */
-class MQStateInProgress implements MQStateKey
+
+namespace AppserverIo\Messaging\Utils;
+
+use AppserverIo\Psr\Pms\StateKey;
+
+/**
+ * This class holds the state key used for messages in progress.
+ *
+ * @category   Library
+ * @package    Messaging
+ * @subpackage Utils
+ * @author     Tim Wagner <tw@appserver.io>
+ * @copyright  2014 TechDivision GmbH <info@appserver.io>
+ * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link       https://github.com/appserver-io/messaging
+ * @link       http://www.appserver.io
+ */
+class StateInProgress implements StateKey
 {
 
     /**
      * Holds the key for messages with an in progress state.
+     *
      * @var integer
      */
     const KEY = 4;
 
     /**
-     * The string value for the 'inProgress' MQStateKey.
+     * The string value for the 'inProgress' state key.
+     *
      * @var string
      */
     protected $state = "inProgress";
 
     /**
-     * Private constructor for marking
-     * the class as utiltiy.
+     * Private constructor for marking the class as utiltiy.
      */
     final protected function __construct()
     {
@@ -62,28 +63,27 @@ class MQStateInProgress implements MQStateKey
     }
 
     /**
-     * Returns a new instance of the MQStateKey.
+     * Returns a new instance of the state key.
      *
-     * @return MQStateInProgress The instance
+     * @return \AppserverIo\Messaging\Utils\StateInProgress The instance
      */
     public static function get()
     {
-        return new MQStateInProgress();
+        return new StateInProgress();
     }
 
     /**
-     * Returns the key value of the
-     * StateKey instance.
+     * Returns the key value of the state key instance.
      *
      * @return integer The key value
      */
     public function getState()
     {
-        return MQStateInProgress::KEY;
+        return StateInProgress::KEY;
     }
 
     /**
-     * Returns the string value for the high MQStateKey.
+     * Returns the string value for the high state key.
      *
      * @return string The string value
      */

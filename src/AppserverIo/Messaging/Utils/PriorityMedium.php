@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityKeyMedium
+ * AppserverIo\Messaging\Utils\PriorityKeyMedium
  *
  * NOTICE OF LICENSE
  *
@@ -12,29 +12,29 @@
  * PHP version 5
  *
  * @category   Library
- * @package    TechDivision_MessageQueueProtocol
+ * @package    Messaging
  * @subpackage Utils
- * @author     Tim Wagner <tw@techdivision.com>
- * @author     Markus Stockbauer <ms@techdivision.com>
- * @copyright  2014 TechDivision GmbH <info@techdivision.com>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/techdivision/TechDivision_MessageQueueProtocol
- * @link       http://www.appserver.io
- */
-
-namespace AppserverIo\Psr\MessageQueueProtocol\Utils;
-
-/**
- * This class holds the PriorityKey used
- * for medium priority messages.
- *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
  * @author     Tim Wagner <tw@appserver.io>
  * @copyright  2014 TechDivision GmbH <info@appserver.io>
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
+ * @link       https://github.com/appserver-io/messaging
+ * @link       http://www.appserver.io
+ */
+
+namespace AppserverIo\Messaging\Utils;
+
+use AppserverIo\Psr\Pms\PriorityKey;
+
+/**
+ * This class holds the priority key used for medium priority messages.
+ *
+ * @category   Library
+ * @package    Messaging
+ * @subpackage Utils
+ * @author     Tim Wagner <tw@appserver.io>
+ * @copyright  2014 TechDivision GmbH <info@appserver.io>
+ * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link       https://github.com/appserver-io/messaging
  * @link       http://www.appserver.io
  */
 class PriorityMedium implements PriorityKey
@@ -42,19 +42,20 @@ class PriorityMedium implements PriorityKey
 
     /**
      * Holds the key for messages with a medium priority.
+     *
      * @var integer
      */
     const KEY = 2;
 
     /**
-     * The string value for the medium PriorityKey.
+     * The string value for the medium priority key.
+     *
      * @var string
      */
     protected $priority = "medium";
 
     /**
-     * Private constructor for marking
-     * the class as utiltiy.
+     * Private constructor for marking the class as utiltiy.
      */
     final protected function __construct()
     {
@@ -62,9 +63,9 @@ class PriorityMedium implements PriorityKey
     }
 
     /**
-     * Returns a new instance of the PriorityKey.
+     * Returns a new instance of the priority key.
      *
-     * @return PriorityMedium The instance
+     * @return \AppserverIo\Messaging\Utils\PriorityMedium The instance
      */
     public static function get()
     {
@@ -72,8 +73,7 @@ class PriorityMedium implements PriorityKey
     }
 
     /**
-     * Returns the key value of the
-     * PriorityKey instance.
+     * Returns the key value of the priority key instance.
      *
      * @return integer The key value
      */
@@ -83,7 +83,7 @@ class PriorityMedium implements PriorityKey
     }
 
     /**
-     * Returns the string value for the medium PriorityKey.
+     * Returns the string value for the medium priority key.
      *
      * @return string The string value
      */

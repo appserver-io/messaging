@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityKeys
+ * AppserverIo\Messaging\Utils\PriorityKeys
  *
  * NOTICE OF LICENSE
  *
@@ -12,37 +12,34 @@
  * PHP version 5
  *
  * @category   Library
- * @package    TechDivision_MessageQueueProtocol
+ * @package    Messaging
  * @subpackage Utils
- * @author     Tim Wagner <tw@techdivision.com>
- * @author     Markus Stockbauer <ms@techdivision.com>
- * @copyright  2014 TechDivision GmbH <info@techdivision.com>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/techdivision/TechDivision_MessageQueueProtocol
- * @link       http://www.appserver.io
- */
-
-namespace AppserverIo\Psr\MessageQueueProtocol\Utils;
-
-/**
- * This class holds the priority keys used
- * as message priority.
- *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
  * @author     Tim Wagner <tw@appserver.io>
  * @copyright  2014 TechDivision GmbH <info@appserver.io>
  * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
+ * @link       https://github.com/appserver-io/messaging
+ * @link       http://www.appserver.io
+ */
+
+namespace AppserverIo\Messaging\Utils;
+
+/**
+ * This class holds the priority keys used as message priority.
+ *
+ * @category   Library
+ * @package    Messaging
+ * @subpackage Utils
+ * @author     Tim Wagner <tw@appserver.io>
+ * @copyright  2014 TechDivision GmbH <info@appserver.io>
+ * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link       https://github.com/appserver-io/messaging
  * @link       http://www.appserver.io
  */
 class PriorityKeys
 {
 
     /**
-     * Private constructor for marking
-     * the class as utility.
+     * Private constructor for marking the class as utility.
      */
     final protected function __construct()
     {
@@ -50,17 +47,16 @@ class PriorityKeys
     }
 
     /**
-     * Returns the initialized PriorityKey for the
-     * passed priority key.
+     * Returns the initialized priority key for the passed priority key.
      *
      * @param integer $key The priority key to return the instance for
      *
-     * @return PriorityKey The instance
+     * @return \AppserverIo\Psr\Pms\PriorityKey The instance
      * @throws \Exception
      */
     public static function get($key)
     {
-        switch($key) { // check the passed key and return the requested PriorityKey instance
+        switch($key) { // check the passed key and return the requested priority key instance
             case 1:
                 return PriorityLow::get();
             case 2:
