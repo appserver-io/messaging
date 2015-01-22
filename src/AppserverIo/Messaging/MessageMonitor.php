@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Messages\MessageMonitor
+ * AppserverIo\Messaging\MessageMonitor
  *
  * NOTICE OF LICENSE
  *
@@ -11,50 +11,50 @@
  *
  * PHP version 5
  *
- * @category   Library
- * @package    TechDivision_MessageQueueProtocol
- * @subpackage Utils
- * @author     Tim Wagner <tw@techdivision.com>
- * @author     Markus Stockbauer <ms@techdivision.com>
- * @copyright  2014 TechDivision GmbH <info@techdivision.com>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/techdivision/TechDivision_MessageQueueProtocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
-namespace AppserverIo\Psr\MessageQueueProtocol\Messages;
+namespace AppserverIo\Messaging;
 
-use AppserverIo\Psr\MessageQueueProtocol\Monitor;
+use AppserverIo\Psr\Pms\Monitor;
 
 /**
- * Class MessageMonitor
+ * A message monitor implementation.
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 class MessageMonitor implements Monitor
 {
 
     /**
      * The target counter for monitoring the message.
+     *
      * @var integer
      */
     protected $target = 0;
 
     /**
      * The row counter for monitoring the message.
+     *
      * @var integer
      */
     protected $rowCount = 0;
 
     /**
      * The log message for monitoring the message.
+     *
      * @var string
      */
     protected $logMessage = '';

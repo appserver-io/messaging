@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\QueueResponse
+ * AppserverIo\Messaging\QueueResponse
  *
  * NOTICE OF LICENSE
  *
@@ -11,31 +11,27 @@
  *
  * PHP version 5
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
-namespace AppserverIo\Psr\MessageQueueProtocol;
-
-use AppserverIo\Psr\MessageQueueProtocol\MessageQueueProtocol;
+namespace AppserverIo\Messaging;
 
 /**
- * Class QueueResponse
+ * A message queue response implementation.
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 class QueueResponse
 {
@@ -55,7 +51,7 @@ class QueueResponse
     protected $message = '';
 
     /**
-     * Initializes the QueueResponse with the parts splitted from the MessageQueue response.
+     * Initializes the response with the parts splitted from the message queue response.
      *
      * @param integer $statusCode The response status from the queue
      * @param string  $message    The status message sent along with status code
@@ -67,10 +63,10 @@ class QueueResponse
     }
 
     /**
-     * Returns true if the Message was successfully delivered
-     * to the MessageQueue.
+     * Returns true if the message was successfully delivered
+     * to the message queue.
      *
-     * @return boolean True if the Message was successfully delivered, else false
+     * @return boolean TRUE if the message was successfully delivered, else FALSE
      */
     public function success()
     {

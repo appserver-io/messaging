@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\MessageQueueProtocol
+ * AppserverIo\Messaging\MessageQueueProtocol
  *
  * NOTICE OF LICENSE
  *
@@ -11,17 +11,16 @@
  *
  * PHP version 5
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
-namespace AppserverIo\Psr\MessageQueueProtocol;
+namespace AppserverIo\Messaging;
 
 /**
  * This is a parser for a native persistence container remote method call.
@@ -36,14 +35,13 @@ namespace AppserverIo\Psr\MessageQueueProtocol;
  * MSG 12 MQ/1.0\r\n
  * czoxOiIxIjs=
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 class MessageQueueProtocol
 {

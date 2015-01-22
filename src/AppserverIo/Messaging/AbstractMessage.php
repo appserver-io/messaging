@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Psr\MessageQueueProtocol\Messages\AbstractMessage
+ * AppserverIo\Messaging\AbstractMessage
  *
  * NOTICE OF LICENSE
  *
@@ -11,40 +11,37 @@
  *
  * PHP version 5
  *
- * @category   Library
- * @package    TechDivision_MessageQueueProtocol
- * @subpackage Utils
- * @author     Tim Wagner <tw@techdivision.com>
- * @author     Markus Stockbauer <ms@techdivision.com>
- * @copyright  2014 TechDivision GmbH <info@techdivision.com>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/techdivision/TechDivision_MessageQueueProtocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
-namespace AppserverIo\Psr\MessageQueueProtocol\Messages;
+namespace AppserverIo\Messaging;
 
-use AppserverIo\Psr\MessageQueueProtocol\Queue;
-use AppserverIo\Psr\MessageQueueProtocol\Message;
-use AppserverIo\Psr\MessageQueueProtocol\Monitor;
-use AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityKeys;
-use AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityKey;
-use AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityLow;
-use AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateKey;
-use AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateKeys;
-use AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateActive;
+use AppserverIo\Psr\Pms\Queue;
+use AppserverIo\Psr\Pms\Message;
+use AppserverIo\Psr\Pms\Monitor;
+use AppserverIo\Psr\Pms\Utils\StateKey;
+use AppserverIo\Psr\Pms\Utils\PriorityKey;
+use AppserverIo\Messaging\Utils\PriorityKeys;
+use AppserverIo\Messaging\Utils\PriorityLow;
+use AppserverIo\Messaging\Utils\StateKeys;
+use AppserverIo\Messaging\Utils\StateActive;
 
 /**
  * The abstract superclass for all messages.
  *
- * @category   Appserver
- * @package    Psr
- * @subpackage MessageQueueProtocol
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io-psr/messagequeueprotocol
- * @link       http://www.appserver.io
+ * @category  Library
+ * @package   Messaging
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 abstract class AbstractMessage implements Message, \Serializable
 {
@@ -59,21 +56,21 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * The destination queue to send the message to.
      *
-     * @var \AppserverIo\Psr\MessageQueueProtocol\Queue
+     * @var \AppserverIo\Psr\Pms\Queue
      */
     protected $destination = null;
 
     /**
      * The parent message.
      *
-     * @var \AppserverIo\Psr\MessageQueueProtocol\Message
+     * @var \AppserverIo\Psr\Pms\Message
      */
     protected $parentMessage = null;
 
     /**
      * The monitor for monitoring the message.
      *
-     * @var \AppserverIo\Psr\MessageQueueProtocol\Monitor
+     * @var \AppserverIo\Psr\Pms\Monitor
      */
     protected $messageMonitor = null;
 
@@ -89,7 +86,7 @@ abstract class AbstractMessage implements Message, \Serializable
      *
      * @var integer
      */
-    protected $state = MQStateActive::KEY;
+    protected $state = StateActive::KEY;
 
     /**
      * The flag if the message should be deleted when finished or not.
@@ -123,7 +120,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the destination queue.
      *
-     * @param \AppserverIo\Psr\MessageQueueProtocol\Queue $destination The destination queue
+     * @param \AppserverIo\Psr\Pms\Queue $destination The destination queue
      *
      * @return void
      */
@@ -135,7 +132,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the destination queue.
      *
-     * @return \AppserverIo\Psr\MessageQueueProtocol\Queue The destination queue
+     * @return \AppserverIo\Psr\Pms\Queue The destination queue
      */
     public function getDestination()
     {
@@ -145,7 +142,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the priority of the message.
      *
-     * @param \AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityKey $priority The priority to set the message to
+     * @param \AppserverIo\Psr\Pms\PriorityKey $priority The priority to set the message to
      *
      * @return void
      */
@@ -157,7 +154,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the priority of the message.
      *
-     * @return \AppserverIo\Psr\MessageQueueProtocol\Utils\PriorityKey The priority of the message
+     * @return \AppserverIo\Psr\Pms\Utils\PriorityKey The priority of the message
      */
     public function getPriority()
     {
@@ -167,11 +164,11 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the state of the message.
      *
-     * @param \AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateKey $state The new state
+     * @param \AppserverIo\Psr\Pms\StateKey $state The new state
      *
      * @return void
      */
-    public function setState(MQStateKey $state)
+    public function setState(StateKey $state)
     {
         $this->state = $state->getState();
     }
@@ -179,17 +176,17 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the state of the message.
      *
-     * @return \AppserverIo\Psr\MessageQueueProtocol\Utils\MQStateKey The message state
+     * @return \AppserverIo\Messaging\Utils\StateKey The message state
      */
     public function getState()
     {
-        return MQStateKeys::get($this->state);
+        return StateKeys::get($this->state);
     }
 
     /**
      * Sets the parent message.
      *
-     * @param \AppserverIo\Psr\MessageQueueProtocol\Message $parentMessage The parent message
+     * @param \AppserverIo\Psr\Pms\Message $parentMessage The parent message
      *
      * @return void
      */
@@ -201,9 +198,9 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the parent message.
      *
-     * @return \AppserverIo\Psr\MessageQueueProtocol\Message The parent message
+     * @return \AppserverIo\Psr\Pms\Message The parent message
      *
-     * @see \AppserverIo\Psr\MessageQueueProtocol\Message::getParentMessage()
+     * @see \AppserverIo\Psr\Pms\Message::getParentMessage()
      */
     public function getParentMessage()
     {
@@ -213,7 +210,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the monitor for monitoring the message itself.
      *
-     * @param \AppserverIo\Psr\MessageQueueProtocol\Monitor $messageMonitor The monitor
+     * @param \AppserverIo\Psr\Pms\Monitor $messageMonitor The monitor
      *
      * @return void
      */
@@ -225,9 +222,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the message monitor.
      *
-     * @return \AppserverIo\Psr\MessageQueueProtocol\Monitor The monitor
-     *
-     * @see \AppserverIo\Psr\MessageQueueProtocol::getMessageMonitor()
+     * @return \AppserverIo\Psr\Pms\Monitor The monitor
      */
     public function getMessageMonitor()
     {

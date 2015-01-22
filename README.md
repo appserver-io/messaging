@@ -1,10 +1,10 @@
-PSR, defining a native message queue container protocol
+Messaging components implementation
 
-[![Latest Stable Version](https://poser.pugx.org/appserver-io-psr/messagequeueprotocol/v/stable.png)](https://packagist.org/packages/appserver-io-psr/messagequeueprotocol) [![Total Downloads](https://poser.pugx.org/appserver-io-psr/messagequeueprotocol/downloads.png)](https://packagist.org/packages/appserver-io-psr/messagequeueprotocol) [![Latest Unstable Version](https://poser.pugx.org/appserver-io-psr/messagequeueprotocol/v/unstable.png)](https://packagist.org/packages/appserver-io-psr/messagequeueprotocol) [![License](https://poser.pugx.org/appserver-io-psr/messagequeueprotocol/license.png)](https://packagist.org/packages/appserver-io-psr/messagequeueprotocol) [![Build Status](https://travis-ci.org/appserver-io-psr/messagequeueprotocol.png)](https://travis-ci.org/appserver-io-psr/messagequeueprotocol)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io-psr/messagequeueprotocol/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io-psr/messagequeueprotocol/?branch=master)[![Code Coverage](https://scrutinizer-ci.com/g/appserver-io-psr/messagequeueprotocol/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io-psr/messagequeueprotocol/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/appserver-io-/messaging/v/stable.png)](https://packagist.org/packages/appserver-io-/messaging) [![Total Downloads](https://poser.pugx.org/appserver-io-/messaging/downloads.png)](https://packagist.org/packages/appserver-io-/messaging) [![Latest Unstable Version](https://poser.pugx.org/appserver-io-/messaging/v/unstable.png)](https://packagist.org/packages/appserver-io-/messaging) [![License](https://poser.pugx.org/appserver-io-/messaging/license.png)](https://packagist.org/packages/appserver-io-/messaging) [![Build Status](https://travis-ci.org/appserver-io-/messaging.png)](https://travis-ci.org/appserver-io-/messaging)[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io-/messaging/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io-/messaging/?branch=master)[![Code Coverage](https://scrutinizer-ci.com/g/appserver-io-/messaging/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io-/messaging/?branch=master)
 
 ## Introduction
 
-An implementation of a pure PHP protocol to be used with message queue components.
+An implementation of a pure PHP messaging components of the PMS PSR.
 
 ## Installation
 
@@ -13,7 +13,7 @@ If you want to use the library with your application you can install it by addin
 ```sh
 {
     "require": {
-        "appserver-io-psr/messagequeueprotocol": "dev-master"
+        "appserver-io-/messaging": "dev-master"
     },
 }
 ```

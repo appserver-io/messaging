@@ -1,6 +1,6 @@
 <phpunit>
     <testsuites>
-	    <testsuite name="appserver-io-psr/messagequeueprotocol PHPUnit testsuite">
+	    <testsuite name="appserver-io/messaging PHPUnit testsuite">
 	        <directory suffix="Test.php">tests</directory>
 	    </testsuite>
 	</testsuites>
