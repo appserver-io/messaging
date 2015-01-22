@@ -1,3 +1,13 @@
+# Version 0.3.1
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Merge with appserver-io/messagequeueclient and make that package obsolete
+
 # Version 0.3.0
 
 ## Bugfixes
