@@ -1,3 +1,13 @@
+# Version 0.3.2
+
+## Bugfixes
+
+* Fixed invalid namespace in QueueConnection class
+
+## Features
+
+* None
+
 # Version 0.3.1
 
 ## Bugfixes

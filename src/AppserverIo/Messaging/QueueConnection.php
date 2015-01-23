@@ -25,8 +25,8 @@ namespace AppserverIo\Messaging;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\CurlException;
 use AppserverIo\Psr\Pms\Message;
-use AppserverIo\Psr\Messaging\QueueResponse;
-use AppserverIo\Psr\Messaging\MessageQueueProtocol;
+use AppserverIo\Messaging\QueueResponse;
+use AppserverIo\Messaging\MessageQueueProtocol;
 
 /**
  * A connection implementation that handles the connection to the message queue.
