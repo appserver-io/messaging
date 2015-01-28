@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -22,29 +20,27 @@
 
 namespace AppserverIo\Messaging;
 
-use AppserverIo\Psr\Pms\Message;
-use AppserverIo\Psr\Pms\MessageListener;
+use AppserverIo\Psr\Pms\MessageInterface;
+use AppserverIo\Psr\Pms\MessageListenerInterface;
 use AppserverIo\Psr\Pms\MessageQueueException;
 use AppserverIo\Psr\Application\ApplicationInterface;
 
 /**
  * An abstract implementation for a message listener.
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
  */
-abstract class AbstractMessageListener implements MessageListener
+abstract class AbstractMessageListener implements MessageListenerInterface
 {
 
     /**
      * The application instance that provides the entity manager.
      *
-     * @var \AppserverIo\Appserver\Core\Interfaces\ApplicationInterface
+     * @var \AppserverIo\Psr\Application\ApplicationInterface
      */
     protected $application;
 
@@ -54,7 +50,7 @@ abstract class AbstractMessageListener implements MessageListener
      * Checks on every start if the database already exists, if not
      * the database will be created immediately.
      *
-     * @param \AppserverIo\Appserver\Core\Interfaces\ApplicationInterface $application The application instance
+     * @param \AppserverIo\Psr\Application\ApplicationInterface $application The application instance
      */
     public function __construct(ApplicationInterface $application)
     {
@@ -64,7 +60,7 @@ abstract class AbstractMessageListener implements MessageListener
     /**
      * Returns the application instance.
      *
-     * @return \AppserverIo\Appserver\Core\Interfaces\ApplicationInterface The application instance
+     * @return \AppserverIo\Psr\Application\ApplicationInterface The application instance
      */
     public function getApplication()
     {
@@ -74,16 +70,16 @@ abstract class AbstractMessageListener implements MessageListener
     /**
      * Updates the message monitor over the applications queue manager method.
      *
-     * @param \AppserverIo\Psr\Pms\Message $message The message to update the monitor for
+     * @param \AppserverIo\Psr\Pms\MessageInterface $message The message to update the monitor for
      *
      * @return void
      * @throws \AppserverIo\Psr\Pms\MessageQueueException Is thrown if no queue manager is registered in the application
      */
-    protected function updateMonitor(Message $message)
+    protected function updateMonitor(MessageInterface $message)
     {
 
         // check if a application instance is available
-        $queueManager = $this->getApplication()->search('QueueContext');
+        $queueManager = $this->getApplication()->search('QueueContextInterface');
         if ($queueManager == null) {
             throw new MessageQueueException(
                 sprintf('Can\'t find queue manager instance in application %s', $this->getApplication()->getName())

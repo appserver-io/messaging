@@ -11,14 +11,11 @@
  *
  * PHP version 5
  *
- * @category   Library
- * @package    Messaging
- * @subpackage Utils
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io/messaging
- * @link       http://www.appserver.io
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
 namespace AppserverIo\Messaging\Utils;
@@ -26,14 +23,11 @@ namespace AppserverIo\Messaging\Utils;
 /**
  * This class holds the priority keys used as message priority.
  *
- * @category   Library
- * @package    Messaging
- * @subpackage Utils
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io/messaging
- * @link       http://www.appserver.io
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 class PriorityKeys
 {
@@ -51,7 +45,7 @@ class PriorityKeys
      *
      * @param integer $key The priority key to return the instance for
      *
-     * @return \AppserverIo\Psr\Pms\PriorityKey The instance
+     * @return \AppserverIo\Psr\Pms\PriorityKeyInterface The instance
      * @throws \Exception
      */
     public static function get($key)

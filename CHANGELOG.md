@@ -1,3 +1,14 @@
+# Version 0.4.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Applied new file name and comment conventions
+* Adapted to latest dependency changes
+
 # Version 0.3.2
 
 ## Bugfixes
