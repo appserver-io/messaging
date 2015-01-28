@@ -11,37 +11,29 @@
  *
  * PHP version 5
  *
- * @category   Library
- * @package    Messaging
- * @subpackage Utils
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io/messaging
- * @link       http://www.appserver.io
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
 namespace AppserverIo\Messaging\Utils;
 
-use AppserverIo\Psr\Pms\StateKey;
-
 /**
  * This class holds the priority keys used as message state.
  *
- * @category   Library
- * @package    Messaging
- * @subpackage Utils
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io/messaging
- * @link       http://www.appserver.io
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 class StateKeys
 {
 
     /**
-     * Private constructor for marking the class as utiltiy.
+     * Private constructor for marking the class as utility.
      */
     final protected function __construct()
     {
@@ -53,7 +45,9 @@ class StateKeys
      *
      * @param integer $key The state key to return the instance for
      *
-     * @return \AppserverIo\Psr\Pms\StateKey\StateKey The instance
+     * @return \AppserverIo\Psr\Pms\StateKeyInterface The instance
+     *
+     * @throws \Exception
      */
     public static function get($key)
     {

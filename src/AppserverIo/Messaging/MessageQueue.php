@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -22,20 +20,18 @@
 
 namespace AppserverIo\Messaging;
 
-use AppserverIo\Psr\Pms\Queue;
+use AppserverIo\Psr\Pms\QueueInterface;
 
 /**
  * Local message queue class implementation.
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
  */
-class MessageQueue implements Queue
+class MessageQueue implements QueueInterface
 {
 
     /**

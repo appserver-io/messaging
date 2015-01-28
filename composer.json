@@ -12,8 +12,10 @@
 	],
 	"require" : {
 		"php" : ">=5.4.0",
-		"appserver-io-psr/pms" : "0.1.*",
-		"appserver-io-psr/application" : "0.4.*"
+		"appserver-io-psr/pms" : "0.2.*",
+		"appserver-io-psr/application" : "0.5.*",
+        "appserver-io-psr/socket" : "0.2.*",
+        "guzzle/guzzle": "3.9.*"
 	},
 	"require-dev" : {
 		"appserver-io/build" : "0.2.*"

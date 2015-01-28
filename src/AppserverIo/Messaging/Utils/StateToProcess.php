@@ -11,33 +11,27 @@
  *
  * PHP version 5
  *
- * @category   Library
- * @package    Messaging
- * @subpackage Utils
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io/messaging
- * @link       http://www.appserver.io
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
 
 namespace AppserverIo\Messaging\Utils;
 
-use AppserverIo\Psr\Pms\StateKey;
+use AppserverIo\Psr\Pms\StateKeyInterface;
 
 /**
  * This class holds the state key used for messages to process.
  *
- * @category   Library
- * @package    Messaging
- * @subpackage Utils
- * @author     Tim Wagner <tw@appserver.io>
- * @copyright  2014 TechDivision GmbH <info@appserver.io>
- * @license    http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link       https://github.com/appserver-io/messaging
- * @link       http://www.appserver.io
+ * @author    Tim Wagner <tw@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @link      https://github.com/appserver-io/messaging
+ * @link      http://www.appserver.io
  */
-class StateToProcess implements StateKey
+class StateToProcess implements StateKeyInterface
 {
 
     /**

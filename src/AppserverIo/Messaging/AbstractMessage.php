@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -22,11 +20,11 @@
 
 namespace AppserverIo\Messaging;
 
-use AppserverIo\Psr\Pms\Queue;
-use AppserverIo\Psr\Pms\Message;
-use AppserverIo\Psr\Pms\Monitor;
-use AppserverIo\Psr\Pms\StateKey;
-use AppserverIo\Psr\Pms\PriorityKey;
+use AppserverIo\Psr\Pms\QueueInterface;
+use AppserverIo\Psr\Pms\MessageInterface;
+use AppserverIo\Psr\Pms\MonitorInterface;
+use AppserverIo\Psr\Pms\StateKeyInterface;
+use AppserverIo\Psr\Pms\PriorityKeyInterface;
 use AppserverIo\Messaging\Utils\PriorityKeys;
 use AppserverIo\Messaging\Utils\PriorityLow;
 use AppserverIo\Messaging\Utils\StateKeys;
@@ -35,15 +33,13 @@ use AppserverIo\Messaging\Utils\StateActive;
 /**
  * The abstract superclass for all messages.
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
  */
-abstract class AbstractMessage implements Message, \Serializable
+abstract class AbstractMessage implements MessageInterface, \Serializable
 {
 
     /**
@@ -56,21 +52,21 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * The destination queue to send the message to.
      *
-     * @var \AppserverIo\Psr\Pms\Queue
+     * @var \AppserverIo\Psr\Pms\QueueInterface
      */
     protected $destination = null;
 
     /**
      * The parent message.
      *
-     * @var \AppserverIo\Psr\Pms\Message
+     * @var \AppserverIo\Psr\Pms\MessageInterface
      */
     protected $parentMessage = null;
 
     /**
      * The monitor for monitoring the message.
      *
-     * @var \AppserverIo\Psr\Pms\Monitor
+     * @var \AppserverIo\Psr\Pms\MonitorInterface
      */
     protected $messageMonitor = null;
 
@@ -120,11 +116,11 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the destination queue.
      *
-     * @param \AppserverIo\Psr\Pms\Queue $destination The destination queue
+     * @param \AppserverIo\Psr\Pms\QueueInterface $destination The destination queue
      *
      * @return void
      */
-    public function setDestination(Queue $destination)
+    public function setDestination(QueueInterface $destination)
     {
         $this->destination = $destination;
     }
@@ -132,7 +128,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the destination queue.
      *
-     * @return \AppserverIo\Psr\Pms\Queue The destination queue
+     * @return \AppserverIo\Psr\Pms\QueueInterface The destination queue
      */
     public function getDestination()
     {
@@ -142,11 +138,11 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the priority of the message.
      *
-     * @param \AppserverIo\Psr\Pms\PriorityKey $priority The priority to set the message to
+     * @param \AppserverIo\Psr\Pms\PriorityKeyInterface $priority The priority to set the message to
      *
      * @return void
      */
-    public function setPriority(PriorityKey $priority)
+    public function setPriority(PriorityKeyInterface $priority)
     {
         $this->priority = $priority->getPriority();
     }
@@ -154,7 +150,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the priority of the message.
      *
-     * @return \AppserverIo\Psr\Pms\Utils\PriorityKey The priority of the message
+     * @return \AppserverIo\Psr\Pms\PriorityKeyInterface The priority of the message
      */
     public function getPriority()
     {
@@ -164,11 +160,11 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the state of the message.
      *
-     * @param \AppserverIo\Psr\Pms\StateKey $state The new state
+     * @param \AppserverIo\Psr\Pms\StateKeyInterface $state The new state
      *
      * @return void
      */
-    public function setState(StateKey $state)
+    public function setState(StateKeyInterface $state)
     {
         $this->state = $state->getState();
     }
@@ -176,7 +172,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the state of the message.
      *
-     * @return \AppserverIo\Messaging\Utils\StateKey The message state
+     * @return \AppserverIo\Messaging\Utils\StateKeyInterface The message state
      */
     public function getState()
     {
@@ -186,11 +182,11 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the parent message.
      *
-     * @param \AppserverIo\Psr\Pms\Message $parentMessage The parent message
+     * @param \AppserverIo\Psr\Pms\MessageInterface $parentMessage The parent message
      *
      * @return void
      */
-    public function setParentMessage(Message $parentMessage)
+    public function setParentMessage(MessageInterface $parentMessage)
     {
         $this->parentMessage = $parentMessage;
     }
@@ -198,9 +194,9 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the parent message.
      *
-     * @return \AppserverIo\Psr\Pms\Message The parent message
+     * @return \AppserverIo\Psr\Pms\MessageInterface The parent message
      *
-     * @see \AppserverIo\Psr\Pms\Message::getParentMessage()
+     * @see \AppserverIo\Psr\Pms\MessageInterface::getParentMessage()
      */
     public function getParentMessage()
     {
@@ -210,11 +206,11 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Sets the monitor for monitoring the message itself.
      *
-     * @param \AppserverIo\Psr\Pms\Monitor $messageMonitor The monitor
+     * @param \AppserverIo\Psr\Pms\MonitorInterface $messageMonitor The monitor
      *
      * @return void
      */
-    public function setMessageMonitor(Monitor $messageMonitor)
+    public function setMessageMonitor(MonitorInterface $messageMonitor)
     {
         $this->messageMonitor = $messageMonitor;
     }
@@ -222,7 +218,7 @@ abstract class AbstractMessage implements Message, \Serializable
     /**
      * Returns the message monitor.
      *
-     * @return \AppserverIo\Psr\Pms\Monitor The monitor
+     * @return \AppserverIo\Psr\Pms\MonitorInterface The monitor
      */
     public function getMessageMonitor()
     {

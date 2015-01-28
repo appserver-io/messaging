@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -24,8 +22,6 @@ namespace AppserverIo\Messaging;
 
 use AppserverIo\Psr\Socket\SocketInterface;
 use AppserverIo\Psr\Pms\MessageQueueException;
-use AppserverIo\Psr\Messaging\QueueResponse;
-use AppserverIo\Psr\Messaging\MessageQueueProtocol;
 
 /**
  * This is a parser for a native message invocation.
@@ -40,10 +36,8 @@ use AppserverIo\Psr\Messaging\MessageQueueProtocol;
  * MSG 12 MQ/1.0
  * czoxOiIxIjs=
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -84,8 +78,8 @@ class MessageQueueParser
      * Parses the request body and tries to unpack the remote method
      * instance from it.
      *
-     * @param \TechDivision\Server\Sockets\SocketInterface $connection    The package remote method instance
-     * @param integer                                      $contentLength The content lenght to read
+     * @param \AppserverIo\Psr\Socket\SocketInterface $connection    The package remote method instance
+     * @param integer                                 $contentLength The content length to read
      *
      * @return object The unpacked message object
      */
@@ -96,11 +90,11 @@ class MessageQueueParser
     }
 
     /**
-     * Parses the messsage queue response and returns a response instance.
+     * Parses the message queue response and returns a response instance.
      *
      * @param string $line The response string to parse
      *
-     * @return \AppserverIo\Psr\Messaging\QueueResponse The queue response instance
+     * @return \AppserverIo\Messaging\QueueResponse The queue response instance
      * @throws \AppserverIo\Psr\Pms\MessageQueueException Is thrown if we found an invalid status code
      */
     public function parseResult($line)

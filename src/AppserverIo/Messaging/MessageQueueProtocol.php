@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -35,10 +33,8 @@ namespace AppserverIo\Messaging;
  * MSG 12 MQ/1.0\r\n
  * czoxOiIxIjs=
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -107,11 +103,11 @@ class MessageQueueProtocol
     );
 
     /**
-     * Prepares the header line for a remote method invokation request.
+     * Prepares the header line for a remote method invocation request.
      *
      * @param string $string The packed remote method instance
      *
-     * @return string The remote method invokation header for the passed remote method instance
+     * @return string The remote method invocation header for the passed remote method instance
      */
     public static function prepareMessageHeader($string)
     {
@@ -129,7 +125,7 @@ class MessageQueueProtocol
     {
         // check if we have a valid status code
         if (!isset(MessageQueueProtocol::$responseMessages[$statusCode])) {
-            $statusCode == MessageQueueProtocol::STATUS_CODE_UNKNOWN;
+            $statusCode = MessageQueueProtocol::STATUS_CODE_UNKNOWN;
         }
 
         // prepare the header elements
@@ -143,10 +139,10 @@ class MessageQueueProtocol
     /**
      * Prepares the header line for the passed remote method.
      *
-     * @param string $method The remote method to prepare the heaed for
+     * @param string $method The remote method to prepare the head for
      * @param string $string The packed remote method instance
      *
-     * @return $string The remote method header for the passed method
+     * @return string The remote method header for the passed method
      */
     protected static function prepareHeader($method, $string)
     {
@@ -186,7 +182,7 @@ class MessageQueueProtocol
      *
      * @param string $string The packed object instance.
      *
-     * @return object The unpacke object instance
+     * @return object The un-packed object instance
      */
     public static function unpack($string)
     {

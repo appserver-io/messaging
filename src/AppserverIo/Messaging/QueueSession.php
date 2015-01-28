@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -22,16 +20,14 @@
 
 namespace AppserverIo\Messaging;
 
-use AppserverIo\Psr\Pms\Queue;
-use AppserverIo\Psr\Pms\Message;
+use AppserverIo\Psr\Pms\QueueInterface;
+use AppserverIo\Psr\Pms\MessageInterface;
 
 /**
  * The queue session implementation.
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -71,12 +67,12 @@ class QueueSession
      * Sends the passed Message instance to the server,
      * using the QueueConnection instance.
      *
-     * @param \AppserverIo\Pms\Message $message          The message to send
-     * @param boolean                  $validateResponse If this flag is true, the QueueConnection waits for the MessageQueue response and validates it
+     * @param \AppserverIo\Psr\Pms\MessageInterface $message          The message to send
+     * @param boolean                               $validateResponse If this flag is true, the QueueConnection waits for the MessageQueue response and validates it
      *
      * @return \AppserverIo\Messaging\QueueResponse The response of the MessageQueue, or null
      */
-    public function send(Message $message, $validateResponse)
+    public function send(MessageInterface $message, $validateResponse)
     {
         return $this->connection->send($message, $validateResponse);
     }
@@ -85,11 +81,11 @@ class QueueSession
      * Creates and returns a new QueueSender instance for sending
      * the Message to the server.
      *
-     * @param \AppserverIo\Pms\Queue $queue the Queue instance to use for sending the message
+     * @param \AppserverIo\Psr\Pms\QueueInterface $queue the Queue instance to use for sending the message
      *
      * @return \AppserverIo\Messaging\QueueSender The initialized QueueSender instance
      */
-    public function createSender(Queue $queue)
+    public function createSender(QueueInterface $queue)
     {
         return new QueueSender($this, $queue);
     }

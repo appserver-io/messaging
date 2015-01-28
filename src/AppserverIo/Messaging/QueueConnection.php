@@ -11,10 +11,8 @@
  *
  * PHP version 5
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -24,17 +22,13 @@ namespace AppserverIo\Messaging;
 
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\CurlException;
-use AppserverIo\Psr\Pms\Message;
-use AppserverIo\Messaging\QueueResponse;
-use AppserverIo\Messaging\MessageQueueProtocol;
+use AppserverIo\Psr\Pms\MessageInterface;
 
 /**
  * A connection implementation that handles the connection to the message queue.
  *
- * @category  Library
- * @package   Messaging
  * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2014 TechDivision GmbH <info@appserver.io>
+ * @copyright 2015 TechDivision GmbH <info@appserver.io>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
@@ -94,7 +88,7 @@ class QueueConnection
     /**
      * Holds an ArrayList with the initialized sessions.
      *
-     * @var ArrayList
+     * @var \ArrayObject
      */
     protected $sessions = null;
 
@@ -116,8 +110,6 @@ class QueueConnection
      * Initializes the connection.
      *
      * @param string $appName Name of the webapp using this client connection
-     *
-     * @return void
      */
     public function __construct($appName = '')
     {
@@ -263,12 +255,15 @@ class QueueConnection
     /**
      * Sends a Message to the server by writing it to the socket.
      *
-     * @param \AppserverIo\Psr\Pms\Message $message          Holds the message to send
-     * @param boolean                      $validateResponse If this flag is TRUE, the queue connection validates the response code
+     * @param \AppserverIo\Psr\Pms\MessageInterface $message          Holds the message to send
+     * @param boolean                               $validateResponse If this flag is TRUE, the queue connection validates the response code
      *
      * @return \AppserverIo\Messaging\QueueResponse The response of the message queue, or null
+     *
+     * @throws \Guzzle\Http\Exception\CurlException
+     * @throws \Exception
      */
-    public function send(Message $message, $validateResponse = false)
+    public function send(MessageInterface $message, $validateResponse = false)
     {
         // connect to the server if necessary
         $this->connect();
@@ -321,12 +316,12 @@ class QueueConnection
      */
     protected function getBaseUrl()
     {
-        // initialize the requeste URL with the default connection values
+        // initialize the requested URL with the default connection values
         return $this->getTransport() . '://' . $this->getAddress() . ':' . $this->getPort();
     }
 
     /**
-     * Initializes a new aueue session instance, registers it
+     * Initializes a new queue session instance, registers it
      * in the array with the open sessions and returns it.
      *
      * @return \AppserverIo\Messaging\QueueSession The initialized queue session instance
