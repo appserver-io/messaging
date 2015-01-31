@@ -20,6 +20,8 @@
 
 namespace AppserverIo\Messaging;
 
+use Rhumsaa\Uuid\Uuid;
+
 /**
  * The implementation for sending a message containing
  * data encapsulated in an array.
@@ -58,13 +60,13 @@ class ArrayMessage extends AbstractMessage
         // initialize the HashMap sent with the message
         $this->message = $message;
         // initialize the message id
-        $this->messageId = md5(uniqid(rand(), true));
+        $this->messageId = Uuid::uuid4();
     }
 
     /**
-     * Returns the message id.
+     * Returns the unique message-ID.
      *
-     * @return string The message id as hash value
+     * @return string The unique message-ID
      */
     public function getMessageId()
     {
