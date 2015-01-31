@@ -54,20 +54,26 @@ class StateKeys
         switch($key) { // check the passed key and return the requested state key instance
             case 1:
                 return StateActive::get();
+                break;
             case 2:
                 return StatePaused::get();
+                break;
             case 3:
                 return StateToProcess::get();
+                break;
             case 4:
                 return StateInProgress::get();
+                break;
             case 5:
                 return StateProcessed::get();
+                break;
             case 6:
                 return StateFailed::get();
+                break;
             case 7:
-                return StateUnknown::get();
             default:
-                throw new \Exception(sprintf('StateKey with key %s doesn\'t exist', $key));
+                return StateUnknown::get();
+                break;
         }
     }
 }

@@ -43,7 +43,7 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
 {
 
     /**
-     * The unique session id.
+     * The unique session-ID.
      *
      * @var string
      */
@@ -172,7 +172,7 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
     /**
      * Returns the state of the message.
      *
-     * @return \AppserverIo\Messaging\Utils\StateKeyInterface The message state
+     * @return \AppserverIo\Psr\Pms\StateKeyInterface The message state
      */
     public function getState()
     {

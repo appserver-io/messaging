@@ -20,6 +20,8 @@
 
 namespace AppserverIo\Messaging;
 
+use Rhumsaa\Uuid\Uuid;
+
 /**
  * The implementation for sending a message containing data encapsulated in a Integer.
  *
@@ -58,24 +60,20 @@ class IntegerMessage extends AbstractMessage
     {
 
         // check if we've an integer passed
-        if (is_integer($message)) {
-            // initialize the Integer sent with the message
-            $this->message = $message;
-
-            // initialize the message id
-            $this->messageId = md5(uniqid(rand(), true));
-
-            return;
+        if (is_integer($message) === false) {
+            throw new \Exception(sprintf('Message \'%s\' is not a valid integer', $message));
         }
 
-        // throw an exception if the message is no integer value
-        throw new \Exception(sprintf('Message \'%s\' is not a valid integer', $message));
+        // initialize the integer sent with the message
+        $this->message = $message;
+        // initialize the message id
+        $this->messageId = Uuid::uuid4();
     }
 
     /**
-     * Returns the message id.
+     * Returns the unique message-ID.
      *
-     * @return string The message id as hash value
+     * @return string The unique message-ID
      */
     public function getMessageId()
     {

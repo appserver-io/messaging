@@ -1,3 +1,14 @@
+# Version 0.4.1
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Add dependency to rhumsaa/uuid composer dependency to genere unique message-IDs
+* Generate message-IDs as UUID
+
 # Version 0.4.0
 
 ## Bugfixes
