@@ -1,3 +1,13 @@
+# Version 0.4.2
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Message-IDs are stored as string instead of UUID instance
+
 # Version 0.4.1
 
 ## Bugfixes

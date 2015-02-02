@@ -67,7 +67,7 @@ class IntegerMessage extends AbstractMessage
         // initialize the integer sent with the message
         $this->message = $message;
         // initialize the message id
-        $this->messageId = Uuid::uuid4();
+        $this->messageId = Uuid::uuid4()->__toString();
     }
 
     /**

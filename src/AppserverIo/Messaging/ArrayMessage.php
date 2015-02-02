@@ -60,7 +60,7 @@ class ArrayMessage extends AbstractMessage
         // initialize the HashMap sent with the message
         $this->message = $message;
         // initialize the message id
-        $this->messageId = Uuid::uuid4();
+        $this->messageId = Uuid::uuid4()->__toString();
     }
 
     /**
