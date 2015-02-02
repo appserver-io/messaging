@@ -68,7 +68,7 @@ class StringMessage extends AbstractMessage
         // initialize the String sent with the message
         $this->message = $message;
         // initialize the message-ID
-        $this->messageId = Uuid::uuid4();
+        $this->messageId = Uuid::uuid4()->__toString();
     }
 
     /**
