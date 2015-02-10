@@ -1,3 +1,13 @@
+# Version 0.4.3
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to appserver-io-psr/application 0.6.* branch
+
 # Version 0.4.2
 
 ## Bugfixes
