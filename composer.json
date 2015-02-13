@@ -14,12 +14,12 @@
 		"php" : ">=5.4.0",
 		"rhumsaa/uuid" : "~2.4",
 		"guzzle/guzzle" : "3.9.*",
-		"appserver-io-psr/pms" : "0.2.*",
-		"appserver-io-psr/socket" : "0.2.*",
-		"appserver-io-psr/application" : "0.6.*"
+		"appserver-io-psr/pms" : "~1.0",
+		"appserver-io-psr/socket" : "~1.0",
+		"appserver-io-psr/application" : "~1.0"
 	},
 	"require-dev" : {
-		"appserver-io/build" : "0.2.*"
+		"appserver-io/build" : "~1.0"
 	},
 	"autoload" : {
 		"psr-0" : {
