@@ -1,25 +1,23 @@
 Messaging components implementation
 
-[![Latest Stable Version](https://poser.pugx.org/appserver-io/messaging/v/stable.png)](https://packagist.org/packages/appserver-io/messaging) [![Total Downloads](https://poser.pugx.org/appserver-io/messaging/downloads.png)](https://packagist.org/packages/appserver-io/messaging) [![License](https://poser.pugx.org/appserver-io/messaging/license.png)](https://packagist.org/packages/appserver-io/messaging) [![Build Status](https://travis-ci.org/appserver-io/messaging.png)](https://travis-ci.org/appserver-io/messaging) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/appserver-io/messaging/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/messaging/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/appserver-io/messaging/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/appserver-io/messaging/?branch=master)
+
+[![Latest Stable Version](https://img.shields.io/packagist/v/appserver-io/messaging.svg?style=flat-square)](https://packagist.org/packages/appserver-io/messaging) 
+ [![Total Downloads](https://img.shields.io/packagist/dt/appserver-io/messaging.svg?style=flat-square)](https://packagist.org/packages/appserver-io/messaging)
+ [![License](https://img.shields.io/packagist/l/appserver-io/messaging.svg?style=flat-square)](https://packagist.org/packages/appserver-io/messaging)
+ [![Build Status](https://img.shields.io/travis/appserver-io/messaging/master.svg?style=flat-square)](http://travis-ci.org/appserver-io/messaging)
+ [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/appserver-io/messaging/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/appserver-io/messaging/?branch=master)
+ [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/appserver-io/messaging/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/appserver-io/messaging/?branch=master)
 
 ## Introduction
 
 An implementation of a pure PHP messaging components of the PMS PSR.
 
-## Installation
+## Issues
 
-If you want to use the library with your application you can install it by adding
+In order to bundle our efforts we would like to collect all issues regarding this package in [the main project repository's issue tracker](https://github.com/appserver-io/appserver/issues).
+Please reference the originating repository as the first element of the issue title e.g.:
+`[appserver-io/<ORIGINATING_REPO>] A issue I am having`
 
-```sh
-{
-    "require": {
-        "appserver-io/messaging": "dev-master"
-    },
-}
-```
-
-to your ```composer.json``` and invoke ```composer update``` in your project.
-
-# External Links
+## External Links
 
 * Documentation at [appserver.io](http://docs.appserver.io)
