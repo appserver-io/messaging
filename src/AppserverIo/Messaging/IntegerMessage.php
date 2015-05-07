@@ -59,6 +59,9 @@ class IntegerMessage extends AbstractMessage
     public function __construct($message)
     {
 
+        // call parent constructor
+        parent::__construct();
+
         // check if we've an integer passed
         if (is_integer($message) === false) {
             throw new \Exception(sprintf('Message \'%s\' is not a valid integer', $message));

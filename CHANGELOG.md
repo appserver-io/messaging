@@ -1,3 +1,13 @@
+# Version 1.0.1
+
+## Bugfixes
+
+* Fixed member initialization in AbstractMessage implementation
+
+## Features
+
+* None
+
 # Version 1.0.0
 
 ## Bugfixes

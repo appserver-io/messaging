@@ -60,6 +60,9 @@ class StringMessage extends AbstractMessage
     public function __construct($message)
     {
 
+        // call parent constructor
+        parent::__construct();
+
         // check if we've an string passed
         if (is_string($message) === false) {
             throw new \Exception(sprintf('Message \'%s\' is not a valid string', $message));
