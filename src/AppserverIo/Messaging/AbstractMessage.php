@@ -98,10 +98,10 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
     public function __construct()
     {
         // initialize the default values
-        $sessionId = "";
-        $priority = PriorityLow::KEY;
-        $state = StateActive::KEY;
-        $locked = false;
+        $this->sessionId = "";
+        $this->priority = PriorityLow::KEY;
+        $this->state = StateActive::KEY;
+        $this->locked = false;
     }
 
     /**
