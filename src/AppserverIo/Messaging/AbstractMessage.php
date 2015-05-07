@@ -47,7 +47,7 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
      *
      * @var string
      */
-    protected $sessionId = "";
+    protected $sessionId = null;
 
     /**
      * The destination queue to send the message to.
@@ -75,21 +75,34 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
      *
      * @var integer
      */
-    protected $priority = PriorityLow::KEY;
+    protected $priority = null;
 
     /**
      * The state of the message, defaults to 'active'.
      *
      * @var integer
      */
-    protected $state = StateActive::KEY;
+    protected $state = null;
 
     /**
      * The flag if the message should be deleted when finished or not.
      *
      * @var boolean
      */
-    protected $locked = false;
+    protected $locked = null;
+
+    /**
+     * Initializes the message with the array
+     * to send to the queue.
+     */
+    public function __construct()
+    {
+        // initialize the default values
+        $sessionId = "";
+        $priority = PriorityLow::KEY;
+        $state = StateActive::KEY;
+        $locked = false;
+    }
 
     /**
      * Sets the unique session id.

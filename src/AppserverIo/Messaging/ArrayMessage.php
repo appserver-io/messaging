@@ -57,6 +57,10 @@ class ArrayMessage extends AbstractMessage
      */
     public function __construct(array $message)
     {
+
+        // call parent constructor
+        parent::__construct();
+
         // initialize the HashMap sent with the message
         $this->message = $message;
         // initialize the message id
