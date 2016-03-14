@@ -1,3 +1,13 @@
+# Version 2.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Allow connection configuration by passing properties file to QueueConnection constructor
+
 # Version 1.0.1
 
 ## Bugfixes

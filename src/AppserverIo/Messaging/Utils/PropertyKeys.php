@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AppserverIo\Messaging\QueueConnectionFactory
+ * AppserverIo\Messaging\Utils\PropertyKeys
  *
  * NOTICE OF LICENSE
  *
@@ -18,12 +18,10 @@
  * @link      http://www.appserver.io
  */
 
-namespace AppserverIo\Messaging;
-
-use AppserverIo\Properties\PropertiesInterface;
+namespace AppserverIo\Messaging\Utils;
 
 /**
- * A factory implementation for creating queue connections.
+ * This class holds the property keys used to create the host connection.
  *
  * @author    Tim Wagner <tw@appserver.io>
  * @copyright 2015 TechDivision GmbH <info@appserver.io>
@@ -31,26 +29,42 @@ use AppserverIo\Properties\PropertiesInterface;
  * @link      https://github.com/appserver-io/messaging
  * @link      http://www.appserver.io
  */
-class QueueConnectionFactory
+class PropertyKeys
 {
 
     /**
-     * Protected constructor to use class only in static context.
+     * The property name with the host address.
+     *
+     * @var string
      */
-    protected function __construct()
-    {
-    }
+    const ADDRESS = 'address';
 
     /**
-     * Returns the queue connection instance as singleton.
+     * The property name with the host port.
      *
-     * @param string                                      $appName    Name of the webapp using this client connection
-     * @param \AppserverIo\Properties\PropertiesInterface $properties The properties containing the connection parameters
-     *
-     * @return \AppserverIo\Messaging\QueueConnection The singleton instance
+     * @var string
      */
-    public static function createQueueConnection($appName = '', PropertiesInterface $properties = null)
+    const PORT = 'port';
+
+    /**
+     * The property name with the transport to use.
+     *
+     * @var string
+     */
+    const TRANSPORT = 'transport';
+
+    /**
+     * The property name with the index file to use.
+     *
+     * @var string
+     */
+    const INDEX_FILE = 'indexFile';
+
+    /**
+     * Private constructor for marking the class as utility.
+     */
+    final protected function __construct()
     {
-        return new QueueConnection($appName, $properties);
+        /* Class is a utility class */
     }
 }

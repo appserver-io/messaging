@@ -23,6 +23,9 @@ namespace AppserverIo\Messaging;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\CurlException;
 use AppserverIo\Psr\Pms\MessageInterface;
+use AppserverIo\Properties\PropertiesInterface;
+use AppserverIo\Properties\Properties;
+use AppserverIo\Messaging\Utils\PropertyKeys;
 
 /**
  * A connection implementation that handles the connection to the message queue.
@@ -41,14 +44,14 @@ class QueueConnection
      *
      * @var string
      */
-    const DEFAULT_SCHEME = 'http';
+    const DEFAULT_TRANSPORT = 'http';
 
     /**
      * The default client sockets IP address.
      *
      * @var string
      */
-    const DEFAULT_HOST = '127.0.0.1';
+    const DEFAULT_ADDRESS = '127.0.0.1';
 
     /**
      * The default client sockets port.
@@ -58,32 +61,18 @@ class QueueConnection
     const DEFAULT_PORT = 8587;
 
     /**
+     * The default index file.
+     *
+     * @var string
+     */
+    const DEFAULT_INDEX_FILE = 'index.mq';
+
+    /**
      * The name of the webapp using this client connection.
      *
      * @var string
      */
     protected $appName;
-
-    /**
-     * The default transport to use.
-     *
-     * @var string
-     */
-    protected $transport = QueueConnection::DEFAULT_SCHEME;
-
-    /**
-     * The client socket's IP address.
-     *
-     * @var string
-     */
-    protected $address = QueueConnection::DEFAULT_HOST;
-
-    /**
-     * The client socket's port.
-     *
-     * @var integer
-     */
-    protected $port = QueueConnection::DEFAULT_PORT;
 
     /**
      * Holds an ArrayList with the initialized sessions.
@@ -107,11 +96,24 @@ class QueueConnection
     protected $client;
 
     /**
+     * The default properties for the context configuration.
+     *
+     * @var array
+     */
+    protected $defaultProperties = array(
+        'transport' => QueueConnection::DEFAULT_TRANSPORT,
+        'address'   => QueueConnection::DEFAULT_ADDRESS,
+        'port'      => QueueConnection::DEFAULT_PORT,
+        'indexFile' => QueueConnection::DEFAULT_INDEX_FILE
+    );
+
+    /**
      * Initializes the connection.
      *
-     * @param string $appName Name of the webapp using this client connection
+     * @param string                                      $appName    Name of the webapp using this client connection
+     * @param \AppserverIo\Properties\PropertiesInterface $properties The properties containing the connection parameters
      */
-    public function __construct($appName = '')
+    public function __construct($appName = '', PropertiesInterface $properties = null)
     {
 
         // set the application name
@@ -120,6 +122,40 @@ class QueueConnection
         // initialize the message queue parser and the session
         $this->parser = new MessageQueueParser();
         $this->sessions = new \ArrayObject();
+
+        // initialize the default properties if no ones has been passed
+        if ($properties == null) {
+            // initialize the default properties
+            $properties = new Properties();
+            foreach ($this->defaultProperties as $key => $value) {
+                $properties->setProperty($key, $value);
+            }
+        }
+
+        // inject the properties
+        $this->injectProperties($properties);
+    }
+
+    /**
+     * The properties used to create the connection.
+     *
+     * @param \AppserverIo\Properties\PropertiesInterface $properties The connection properties
+     *
+     * @return void
+     */
+    public function injectProperties(PropertiesInterface $properties)
+    {
+        $this->properties = $properties;
+    }
+
+    /**
+     * Return's the properties used to create the connection.
+     *
+     * @return \AppserverIo\Properties\PropertiesInterface The connection properties
+     */
+    public function getProperties()
+    {
+        return $this->properties;
     }
 
     /**
@@ -155,19 +191,6 @@ class QueueConnection
     }
 
     /**
-     * Sets the IP address or domain name of the server the
-     * message queue is running on.
-     *
-     * @param string $address Holds the server to connect to
-     *
-     * @return void
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
-
-    /**
      * Returns the IP address or domain name of the server the
      * message queue is running on.
      *
@@ -175,19 +198,7 @@ class QueueConnection
      */
     public function getAddress()
     {
-        return $this->address;
-    }
-
-    /**
-     * Sets  the port for the connection.
-     *
-     * @param integer $port Holds the port for the connection
-     *
-     * @return void
-     */
-    public function setPort($port)
-    {
-        $this->port = $port;
+        return $this->getProperties()->getProperty(PropertyKeys::ADDRESS);
     }
 
     /**
@@ -197,29 +208,27 @@ class QueueConnection
      */
     public function getPort()
     {
-        return $this->port;
-    }
-
-    /**
-     *  Sets the transport to use.
-     *
-     * @param integer $transport The transport to use
-     *
-     * @return void
-     */
-    public function setTransport($transport)
-    {
-        $this->transport = $transport;
+        return $this->getProperties()->getProperty(PropertyKeys::PORT);
     }
 
     /**
      * Returns the transport to use.
      *
-     * @return integer The transport to use.
+     * @return string The transport to use.
      */
     public function getTransport()
     {
-        return $this->transport;
+        return $this->getProperties()->getProperty(PropertyKeys::TRANSPORT);
+    }
+
+    /**
+     * Returns the index file to use.
+     *
+     * @return string The index file to use.
+     */
+    public function getIndexFile()
+    {
+        return $this->getProperties()->getProperty(PropertyKeys::INDEX_FILE);
     }
 
     /**
@@ -305,7 +314,7 @@ class QueueConnection
      */
     protected function getPath()
     {
-        return sprintf('/%s/index.mq', $this->getAppName());
+        return sprintf('/%s/%s', $this->getAppName(), $this->getIndexFile());
     }
 
     /**
@@ -316,8 +325,7 @@ class QueueConnection
      */
     protected function getBaseUrl()
     {
-        // initialize the requested URL with the default connection values
-        return $this->getTransport() . '://' . $this->getAddress() . ':' . $this->getPort();
+        return sprintf('%s://%s:%s', $this->getTransport(), $this->getAddress(), $this->getPort());
     }
 
     /**
