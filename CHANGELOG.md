@@ -1,3 +1,13 @@
+# Version 2.0.1
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to latest appserver-io/properties version
+
 # Version 2.0.0
 
 ## Bugfixes
