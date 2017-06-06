@@ -24,6 +24,7 @@ use AppserverIo\Psr\Pms\MessageInterface;
 use AppserverIo\Psr\Pms\MessageListenerInterface;
 use AppserverIo\Psr\Pms\MessageQueueException;
 use AppserverIo\Psr\Application\ApplicationInterface;
+use AppserverIo\Psr\Pms\QueueContextInterface;
 
 /**
  * An abstract implementation for a message listener.
@@ -41,21 +42,9 @@ abstract class AbstractMessageListener implements MessageListenerInterface
      * The application instance that provides the entity manager.
      *
      * @var \AppserverIo\Psr\Application\ApplicationInterface
+     * @Resource(name="ApplicationInterface")
      */
     protected $application;
-
-    /**
-     * Initializes the session bean with the Application instance.
-     *
-     * Checks on every start if the database already exists, if not
-     * the database will be created immediately.
-     *
-     * @param \AppserverIo\Psr\Application\ApplicationInterface $application The application instance
-     */
-    public function __construct(ApplicationInterface $application)
-    {
-        $this->application = $application;
-    }
 
     /**
      * Returns the application instance.
@@ -79,7 +68,7 @@ abstract class AbstractMessageListener implements MessageListenerInterface
     {
 
         // check if a application instance is available
-        $queueManager = $this->getApplication()->search('QueueContextInterface');
+        $queueManager = $this->getApplication()->search(QueueContextInterface::IDENTIFIER);
         if ($queueManager == null) {
             throw new MessageQueueException(
                 sprintf('Can\'t find queue manager instance in application %s', $this->getApplication()->getName())
