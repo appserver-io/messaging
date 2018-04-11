@@ -1,3 +1,13 @@
+# Version 3.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Remove AbstractMessageListener::__construct() method and inject Application it with @Resource annotation
+
 # Version 2.0.1
 
 ## Bugfixes
