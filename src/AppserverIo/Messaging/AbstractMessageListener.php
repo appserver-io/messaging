@@ -23,7 +23,6 @@ namespace AppserverIo\Messaging;
 use AppserverIo\Psr\Pms\MessageInterface;
 use AppserverIo\Psr\Pms\MessageListenerInterface;
 use AppserverIo\Psr\Pms\MessageQueueException;
-use AppserverIo\Psr\Application\ApplicationInterface;
 use AppserverIo\Psr\Pms\QueueContextInterface;
 
 /**

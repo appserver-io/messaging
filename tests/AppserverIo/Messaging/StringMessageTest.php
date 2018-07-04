@@ -57,7 +57,7 @@ class StringMessageTest extends \PHPUnit_Framework_TestCase
      * Initializes the instance we want to run the testcases for.
      *
      * @return void
-     * @see PHPUnit_Framework_TestCase::setUp()
+     * @see \PHPUnit_Framework_TestCase::setUp()
      */
     public function setUp()
     {

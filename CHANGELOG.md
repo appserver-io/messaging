@@ -1,3 +1,13 @@
+# Version 4.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Add addtional methods to AbstractMethod to improve message handling
+
 # Version 3.0.0
 
 ## Bugfixes
