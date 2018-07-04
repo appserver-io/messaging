@@ -1,41 +1,42 @@
 {
-	"name" : "appserver-io/messaging",
-	"description" : "Messaging components implementing the PMS PSR",
-	"homepage" : "https://github.com/appserver-io/messaging",
-	"license" : "OSL-3.0",
-	"authors" : [{
-			"name" : "Tim Wagner",
-			"email" : "tw@appserver.io",
-			"homepage" : "https://github.com/wagnert",
-			"role" : "Developer"
-		}
-	],
-	"require" : {
-		"php" : ">=5.4.0",
-		"rhumsaa/uuid" : "~2.4",
-		"guzzle/guzzle" : "3.9.*",
-		"appserver-io/properties" : "~2.0",
-		"appserver-io-psr/pms" : "~1.0",
-		"appserver-io-psr/socket" : "~1.0",
-		"appserver-io-psr/application" : "~1.0"
-	},
-	"require-dev" : {
-		"appserver-io/build" : "~1.0"
-	},
-	"autoload" : {
-		"psr-0" : {
-			"AppserverIo\\Messaging" : [
-				"src/",
-				"tests/"
-			]
-		}
-	},
-	"support" : {
-		"email" : "t.wagner@techdivision.com",
-		"issues" : "https://github.com/appserver-io/messaging/issues",
-		"source" : "https://github.com/appserver-io/messaging"
-	},
-	"keywords" : [
-		"messaging pms components"
-	]
+    "name": "appserver-io/messaging",
+    "description": "Messaging components implementing the PMS PSR",
+    "homepage": "https://github.com/appserver-io/messaging",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Tim Wagner",
+            "email": "tw@appserver.io",
+            "homepage": "https://github.com/wagnert",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "rhumsaa/uuid": "~2.4",
+        "guzzle/guzzle": "3.9.*",
+        "appserver-io/properties": "~2.0",
+        "appserver-io-psr/pms": "~2.0",
+        "appserver-io-psr/socket": "~1.0",
+        "appserver-io-psr/application": "~1.0"
+    },
+    "require-dev": {
+        "appserver-io/build": "~1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "AppserverIo\\Messaging": [
+                "src/",
+                "tests/"
+            ]
+        }
+    },
+    "support": {
+        "email": "t.wagner@techdivision.com",
+        "issues": "https://github.com/appserver-io/messaging/issues",
+        "source": "https://github.com/appserver-io/messaging"
+    },
+    "keywords": [
+        "messaging pms components"
+    ]
 }

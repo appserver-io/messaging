@@ -29,6 +29,10 @@ use AppserverIo\Messaging\Utils\PriorityKeys;
 use AppserverIo\Messaging\Utils\PriorityLow;
 use AppserverIo\Messaging\Utils\StateKeys;
 use AppserverIo\Messaging\Utils\StateActive;
+use AppserverIo\Messaging\Utils\StateFailed;
+use AppserverIo\Messaging\Utils\StateProcessed;
+use AppserverIo\Messaging\Utils\StatePaused;
+use AppserverIo\Lang\Reflection\ReflectionObject;
 
 /**
  * The abstract superclass for all messages.
@@ -90,6 +94,20 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
      * @var boolean
      */
     protected $locked = null;
+
+    /**
+     * The array with the timeouts for the retries.
+     *
+     * @var array
+     */
+    protected $retryTimeouts = array();
+
+    /**
+     * The array with the callbacks.
+     *
+     * @var array
+     */
+    protected $callbacks = array();
 
     /**
      * Initializes the message with the array
@@ -292,5 +310,127 @@ abstract class AbstractMessage implements MessageInterface, \Serializable
         foreach (unserialize($data) as $propertyName => $propertyValue) {
             $this->$propertyName = $propertyValue;
         }
+    }
+
+    /**
+     * Set's the array with the retry timeouts which is also responsible
+     * for the the number of retries.
+     *
+     * @param array $retryTimeouts The number of retries with their timeouts
+     *
+     * @return void
+     */
+    public function setRetryTimeouts(array $retryTimeouts)
+    {
+        $this->retryTimeouts = $retryTimeouts;
+    }
+
+    /**
+     * Return's the array with the retry timeouts.
+     *
+     * @return array The retry timeouts
+     */
+    public function getRetryTimeouts()
+    {
+        return $this->retryTimeouts;
+    }
+
+    /**
+     * Return's the timeout for the given retry.
+     *
+     * @param integer $retry The retry to return the timeout for
+     *
+     * @return integer The timeout in seconds for the passed retry
+     * @throws \InvalidArgumentException Is thrown if the timeout for the passed retry is NOT available
+     */
+    public function getRetryTimeout($retry)
+    {
+
+        // try to find the timeout for the passed retry
+        if (isset($this->retryTimeouts[$retry])) {
+            return $this->retryTimeouts[$retry];
+        }
+
+        // throw an exception if the timeout is NOT available
+        throw new \InvalidArgumentException(sprintf('Can\t find timeout information for retry %d', $retry));
+    }
+
+    /**
+     * Return's the number of retries for this message.
+     *
+     * @return integer The number of retries
+     */
+    public function getRetryCounter()
+    {
+        return sizeof($this->getRetryTimeouts());
+    }
+
+    /**
+     * Add's the callback for the given state.
+     *
+     * @param \AppserverIo\Psr\Pms\StateKeyInterface $state    The state to register the callback for
+     * @param array                                  $callback The array with the bean's lookup and method name that has to be invoked
+     *
+     * @return void
+     * @throws \Exception Is thrown if the passed state doesn't support callbacks
+     */
+    public function addCallback(StateKeyInterface $state, array $callback)
+    {
+
+        // query whether or not the state supports callbacks
+        if (in_array($state->getState(), array(StateFailed::KEY, StateProcessed::KEY, StatePaused::KEY))) {
+            // initialize the array with the state callbacks, if not already done
+            if (!isset($this->callbacks[$state->getState()])) {
+                $this->callbacks[$state->getState()] = array();
+            }
+
+            // add the callback to the state
+            array_push($this->callbacks[$state->getState()], $callback);
+
+            // return immediately
+            return;
+        }
+
+        // throw an exception, if the passed state doesn't support callbacks
+        throw new \Exception(
+            sprintf(
+                'Callbacks for state %s is not supported, state has to be either one of StateFailed, StateProcessed or StatePaused',
+                (new ReflectionObject($state))->getShortName()
+            )
+        );
+    }
+
+    /**
+     * Return's the callback information for the given state.
+     *
+     * @param \AppserverIo\Psr\Pms\StateKeyInterface $state The state to register the callback for
+     *
+     * @return array The array with the callback information
+     */
+    public function getCallbacks(StateKeyInterface $state)
+    {
+
+        // initialize the array with the callbacks
+        $callbacks = array();
+
+        // try to find the callback for the passed state
+        if (isset($this->callbacks[$state->getState()])) {
+            $callbacks = $this->callbacks[$state->getState()];
+        }
+
+        // return the array with the callbacks
+        return $callbacks;
+    }
+
+    /**
+     * Return's whether or not callbacks for the passed state has been registered.
+     *
+     * @param \AppserverIo\Psr\Pms\StateKeyInterface $state The state to register the callback for
+     *
+     * @return boolean TRUE if callbacks has been registered, else FALSE
+     */
+    public function hasCallbacks(StateKeyInterface $state)
+    {
+        return isset($this->callbacks[$state->getState()]);
     }
 }

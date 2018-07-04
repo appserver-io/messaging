@@ -50,7 +50,7 @@ class MessageQueueTest extends \PHPUnit_Framework_TestCase
      * Initializes the method we wan to test.
      *
      * @return void
-     * @see PHPUnit_Framework_TestCase::setUp()
+     * @see \PHPUnit_Framework_TestCase::setUp()
      */
     protected function setUp()
     {
