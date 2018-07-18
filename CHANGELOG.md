@@ -1,3 +1,14 @@
+# Version 4.0.1
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to Doctrine Annotations library
+* Add appserver-io-psr/epb as dependency
+
 # Version 4.0.0
 
 ## Bugfixes
