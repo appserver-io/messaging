@@ -16,6 +16,7 @@
         "rhumsaa/uuid": "~2.4",
         "guzzle/guzzle": "3.9.*",
         "appserver-io/properties": "~2.0",
+        "appserver-io-psr/epb": "~7.0",
         "appserver-io-psr/pms": "~2.0",
         "appserver-io-psr/socket": "~1.0",
         "appserver-io-psr/application": "~1.0"

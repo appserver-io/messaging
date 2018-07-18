@@ -24,6 +24,7 @@ use AppserverIo\Psr\Pms\MessageInterface;
 use AppserverIo\Psr\Pms\MessageListenerInterface;
 use AppserverIo\Psr\Pms\MessageQueueException;
 use AppserverIo\Psr\Pms\QueueContextInterface;
+use AppserverIo\Psr\EnterpriseBeans\Annotations as EPB;
 
 /**
  * An abstract implementation for a message listener.
@@ -41,7 +42,7 @@ abstract class AbstractMessageListener implements MessageListenerInterface
      * The application instance that provides the entity manager.
      *
      * @var \AppserverIo\Psr\Application\ApplicationInterface
-     * @Resource(name="ApplicationInterface")
+     * @EPB\Resource(name="ApplicationInterface")
      */
     protected $application;
 
